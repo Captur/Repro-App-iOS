@@ -1,0 +1,187 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature AccessLevelOnImport -enable-bare-slash-regex -module-name CapturMicromobilityEvents
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVFoundation
+@_exported import CapturMicromobilityEvents
+import CoreML
+import Foundation
+import Swift
+import SwiftUI
+import UIKit
+import Vision
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+public class CapturCameraManager {
+  public init(referenceId: Swift.String)
+  public func subscribeToEvents(events: any CapturMicromobilityEvents.CapturEvents)
+  public func retake()
+  public func endAttempt()
+  @objc deinit
+}
+@available(*, message: "This is an experimental feature")
+@_Concurrency.MainActor @preconcurrency public struct CapturUltraWideCamera : SwiftUI.UIViewControllerRepresentable {
+  public typealias UIViewControllerType = UIKit.UIViewController
+  @_Concurrency.MainActor @preconcurrency public init(capturCameraHandler: CapturMicromobilityEvents.CapturCameraManager, isFlashOn: SwiftUICore.Binding<Swift.Bool>)
+  @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: CapturMicromobilityEvents.CapturUltraWideCamera.Context) -> UIKit.UIViewController
+  @_Concurrency.MainActor @preconcurrency public func makeCoordinator() -> CapturMicromobilityEvents.CapturUltraWideCamera.Coordinator
+  @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: UIKit.UIViewController, context: CapturMicromobilityEvents.CapturUltraWideCamera.Context)
+  @objc @_hasMissingDesignatedInitializers public class Coordinator : ObjectiveC.NSObject {
+    @objc deinit
+  }
+  @available(*, message: "This is an experimental feature")
+  @available(iOS, introduced: 13.0, message: "This is an experimental feature")
+  @available(tvOS, introduced: 13.0, message: "This is an experimental feature")
+  @available(watchOS, introduced: 6.0, message: "This is an experimental feature")
+  @available(macOS, introduced: 10.15, message: "This is an experimental feature")
+  public typealias Body = Swift.Never
+}
+public enum CapturDecision : Swift.String {
+  case goodParking
+  case goodDelivery
+  case improvableParking
+  case improvableDelivery
+  case badParking
+  case badDelivery
+  case insufficientInformation
+  case noDecisionMapDetected
+  public static func getDecisionForDecisionString(decision: Swift.String) -> CapturMicromobilityEvents.CapturDecision
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct CapturException : Swift.Error {
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+public enum CapturAssetType : Swift.String {
+  case eBike
+  case eScooter
+  case seatedEScooter
+  case package
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_Concurrency.MainActor @preconcurrency public struct CapturCamera : SwiftUI.UIViewControllerRepresentable {
+  public typealias UIViewControllerType = UIKit.UIViewController
+  @_Concurrency.MainActor @preconcurrency public init(capturCameraHandler: CapturMicromobilityEvents.CapturCameraManager, isFlashOn: SwiftUICore.Binding<Swift.Bool>, isZoomedIn: SwiftUICore.Binding<Swift.Bool>)
+  @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: CapturMicromobilityEvents.CapturCamera.Context) -> UIKit.UIViewController
+  @_Concurrency.MainActor @preconcurrency public func makeCoordinator() -> CapturMicromobilityEvents.CapturCamera.Coordinator
+  @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: UIKit.UIViewController, context: CapturMicromobilityEvents.CapturCamera.Context)
+  @objc @_hasMissingDesignatedInitializers public class Coordinator : ObjectiveC.NSObject {
+    @objc deinit
+  }
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias Body = Swift.Never
+}
+public struct CapturOutput {
+  public var decision: CapturMicromobilityEvents.CapturDecision
+  public var reason: Swift.String
+  public var guidanceTitle: Swift.String?
+  public var guidanceDetail: Swift.String?
+  public var decisionTitle: Swift.String?
+  public var decisionDetail: Swift.String?
+  public var realtimePrediction: [CapturMicromobilityEvents.CapturPrediction]?
+  public var image: UIKit.UIImage?
+  public init(decision: CapturMicromobilityEvents.CapturDecision, reason: Swift.String, guidanceTitle: Swift.String? = nil, guidanceDetail: Swift.String? = nil, decisionTitle: Swift.String? = nil, decisionDetail: Swift.String? = nil, realtimePrediction: [CapturMicromobilityEvents.CapturPrediction]? = nil, image: UIKit.UIImage? = nil)
+}
+public enum CapturCameraState {
+  case cameraRunning
+  case cameraDecided
+  public static func == (a: CapturMicromobilityEvents.CapturCameraState, b: CapturMicromobilityEvents.CapturCameraState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CapturInitialiseModelResult {
+  public var status: Swift.Bool
+  public var error: CapturMicromobilityEvents.CapturError?
+}
+@_hasMissingDesignatedInitializers public class Captur {
+  public static let shared: CapturMicromobilityEvents.Captur
+  public func setApi(key: Swift.String) throws
+  public func setTimeout(value: Swift.Int)
+  public func setDelay(value: Swift.Int) throws
+  public func prepareModel(locationName: Swift.String?, assetType: CapturMicromobilityEvents.CapturAssetType, latitude: Swift.Float?, longitude: Swift.Float?, callback: @escaping (Swift.Bool, CapturMicromobilityEvents.CapturError?) -> Swift.Void)
+  public func getModelInitialisationStatus() -> Swift.Bool
+  public func getEtag() throws -> Swift.String
+  public func getConfig(locationName: Swift.String?, assetType: CapturMicromobilityEvents.CapturAssetType, latitude: Swift.Float?, longitude: Swift.Float?, callback: @escaping (Swift.Bool, CapturMicromobilityEvents.CapturError?) -> Swift.Void)
+  @objc deinit
+}
+extension CapturMicromobilityEvents.Captur {
+  @available(*, deprecated, message: "Use prepareModel(locationName:, assetType:, latitude:, longitude:, callback:) instead. ")
+  public func prepareModel(locationName: Swift.String, assetType: CapturMicromobilityEvents.CapturAssetType, callback: @escaping (Swift.Bool, CapturMicromobilityEvents.CapturError?) -> Swift.Void)
+  @available(*, deprecated, message: "Use getConfig(locationName:Optional assetType:latitude:longitude:callback:) instead.")
+  public func getConfiguration(locationName: Swift.String, assetType: CapturMicromobilityEvents.CapturAssetType, latitude: Swift.Float?, longitude: Swift.Float?, callback: @escaping (Swift.Bool, CapturMicromobilityEvents.CapturError?) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class CapturError : Swift.Error {
+  public var errorType: CapturMicromobilityEvents.CapturError.ErrorType
+  public var errorMessage: Swift.String
+  public enum ErrorType {
+    case locationNameEmpty
+    case modelInitialisationFailure
+    case modelUnavailable
+    case serialisationError
+    case modelVerificationFailed
+    case serverError
+    case unknownError
+    case videoDeviceNotFound
+    case videoDeviceInputError
+    case videoDeviceOutputError
+    case videoDeviceLockError
+    case modelDoesNotExistOnDevice
+    public static func == (a: CapturMicromobilityEvents.CapturError.ErrorType, b: CapturMicromobilityEvents.CapturError.ErrorType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+public protocol CapturEvents : AnyObject {
+  func capturDidGenerateEvent(state: CapturMicromobilityEvents.CapturCameraState, metadata: CapturMicromobilityEvents.CapturOutput?)
+  func capturDidGenerateError(error: CapturMicromobilityEvents.CapturError)
+  func capturDidGenerateGuidance(metadata: CapturMicromobilityEvents.CapturOutput)
+  func capturDidRevokeGuidance()
+}
+public struct CapturLog {
+  public static func log(_ message: Swift.String)
+}
+public struct CapturPrediction : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum CapturModelInitEngine {
+  case cpu
+  case cpuAndGpu
+  public static func == (a: CapturMicromobilityEvents.CapturModelInitEngine, b: CapturMicromobilityEvents.CapturModelInitEngine) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(*, message: "This is an experimental feature")
+extension CapturMicromobilityEvents.CapturUltraWideCamera : Swift.Sendable {}
+extension CapturMicromobilityEvents.CapturDecision : Swift.Equatable {}
+extension CapturMicromobilityEvents.CapturDecision : Swift.Hashable {}
+extension CapturMicromobilityEvents.CapturDecision : Swift.RawRepresentable {}
+extension CapturMicromobilityEvents.CapturAssetType : Swift.Equatable {}
+extension CapturMicromobilityEvents.CapturAssetType : Swift.Hashable {}
+extension CapturMicromobilityEvents.CapturAssetType : Swift.RawRepresentable {}
+extension CapturMicromobilityEvents.CapturCamera : Swift.Sendable {}
+extension CapturMicromobilityEvents.CapturCameraState : Swift.Equatable {}
+extension CapturMicromobilityEvents.CapturCameraState : Swift.Hashable {}
+extension CapturMicromobilityEvents.CapturError.ErrorType : Swift.Equatable {}
+extension CapturMicromobilityEvents.CapturError.ErrorType : Swift.Hashable {}
+extension CapturMicromobilityEvents.CapturModelInitEngine : Swift.Equatable {}
+extension CapturMicromobilityEvents.CapturModelInitEngine : Swift.Hashable {}

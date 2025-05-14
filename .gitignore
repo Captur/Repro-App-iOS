@@ -1,0 +1,108 @@
+############################################################
+# macOS system files
+############################################################
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+############################################################
+# Xcode & iOS build artifacts
+############################################################
+# Derived data & build products
+DerivedData/
+build/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.moved-aside
+*.xcuserdatad
+*.xcscmblueprint
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Xcode scheme/user data (keep shared schemes)
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Code coverage & profiling
+*.gcno
+*.gcda
+*.xccoverage
+*.profdata
+
+############################################################
+# Swift Package Manager
+############################################################
+.swiftpm/
+.build/
+
+############################################################
+# CocoaPods
+############################################################
+Pods/
+Podfile.lock
+# If you’re committing the Podfile.lock, delete the line above
+
+############################################################
+# Carthage
+############################################################
+Carthage/Build/
+Carthage/Checkouts/
+
+############################################################
+# SwiftGen, Sourcery, etc. (generated sources)
+############################################################
+Generated/
+R.generated.swift
+*.generated.swift
+
+############################################################
+# fastlane
+############################################################
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+############################################################
+# Xcode playgrounds
+############################################################
+timeline.xctimeline
+playground.xcworkspace
+
+############################################################
+# Bundler / Gems
+############################################################
+.bundle/
+Gemfile.lock
+
+############################################################
+# Temporary by-products
+############################################################
+*.tmp
+*.swp
+*~
+# Vim undo history
+*.un~
+
+############################################################
+# Crash reports
+############################################################
+*.crash
+*.xccrashpoint
+
+############################################################
+# App Center & Firebase / Crashlytics
+############################################################
+*.dSYM.zip
+*.dSYM
+
+############################################################
+# Archive products
+############################################################
+*.xcarchive
+*.ipa

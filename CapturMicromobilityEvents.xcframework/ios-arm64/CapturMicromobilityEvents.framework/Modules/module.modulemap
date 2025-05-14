@@ -1,0 +1,6 @@
+framework module CapturMicromobilityEvents {
+  umbrella header "CapturMicromobilityEvents.h"
+  export *
+
+  module * { export * }
+}
